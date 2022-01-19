@@ -1,16 +1,3 @@
 {{ define "main" }}
-
-<h1>Tutorials</h1>
-  {{ range .RegularPages }}
-    <h2> {{ .Title | markdownify }} </h2>
-    <p> {{ .Params.summary | markdownify }} </p>
-    <h3> Learning Objectives </h3>
-      <ol>
-        {{range .Params.learning_goals}}
-          <li>{{ . }}</li>
-        {{end}}
-      </ol>
-    <p> Image </p>
-  {{ end }}
-
+This is a list page
 {{ end }}
