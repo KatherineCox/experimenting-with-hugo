@@ -1,23 +1,41 @@
 {{ define "main" }}
 
-<h1>{{ .Title | markdownify }}</h1>
+<main class="container">
 
-  {{ range .RegularPages }}
-    <h2> {{ .Title | markdownify }} </h2>
-    <p> {{ .Params.summary | markdownify }} </p>
-    <h3> Learning Objectives </h3>
-      <ol>
-        {{range .Params.learning_goals}}
-          <li>{{ . }}</li>
-        {{end}}
-      </ol>
-    <p> Image </p>
-    {{ .Params.image | markdownify }}
-  {{ end }}
+  <h1>{{ .Title | markdownify }}</h1>
 
-<h1>Pages (instead of Regular Pages)</h1>
-  {{ range .Pages }}
-    <h2> {{ .Title | markdownify }} </h2>
-  {{ end }}
+    {{ .Content }}
+
+    {{ range .RegularPages }}
+      <div class="card">
+        <div class="row">
+
+          <div class="col-md-2">
+            <img src="{{ .Params.image }}" alt={{ .Params.image_caption}} >
+          </div>
+
+          <div class="col-md-10">
+            <div class="card-body">
+              <h2 class="card-title"> {{ .Title | markdownify }} </h2>
+              <p> {{ .Params.summary | markdownify }} </p>
+              <h3> Learning Objectives </h3>
+                <ol>
+                  {{range .Params.learning_goals}}
+                    <li>{{ . }}</li>
+                  {{end}}
+                </ol>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    {{ end }}
+
+  <h1>Pages (instead of Regular Pages)</h1>
+    {{ range .Pages }}
+      <h2> {{ .Title | markdownify }} </h2>
+    {{ end }}
+
+</main>
 
 {{ end }}

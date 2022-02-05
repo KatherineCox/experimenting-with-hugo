@@ -2,3 +2,9 @@ baseURL = 'https://katherinecox.github.io/experimenting-with-hugo/'
 languageCode = 'en-us'
 title = 'C-MOOR Tutorials'
 theme = "cmoor-tutorials"
+
+# allow raw html
+# [markup]
+#   [markup.goldmark]
+#     [markup.goldmark.renderer]
+#       unsafe = true
