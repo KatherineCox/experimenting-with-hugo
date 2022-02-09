@@ -6,12 +6,17 @@
 
     {{ .Content }}
 
+    {{ $default_image := .Resources.GetMatch .Params.default_image}}
+    {{ $default_alt_text := .Params.default_image_alt_text }}
+
     {{ range .RegularPages }}
       <div class="card">
         <div class="row">
 
           <div class="col-md-2">
-            <img src="{{ .Params.image }}" alt={{ .Params.image_caption}} >
+            {{ $image := .Resources.GetMatch .Params.image | default $default_image }}
+            {{ $alt_text := .Params.image_alt_text | default $default_alt_text }}
+            <img src="{{ $image.RelPermalink }}" alt={{ $alt_text }}>
           </div>
 
           <div class="col-md-10">
@@ -34,6 +39,11 @@
   <h1>Pages (instead of Regular Pages)</h1>
     {{ range .Pages }}
       <h2> {{ .Title | markdownify }} </h2>
+      {{ $image := .Resources.GetMatch .Params.image | default $default_image }}
+      <p> {{$image}} </p>
+      <p> {{$image.RelPermalink}} </p>
+
+
     {{ end }}
 
 </main>
