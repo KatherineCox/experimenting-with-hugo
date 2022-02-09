@@ -16,7 +16,7 @@
           <div class="col-md-2">
             {{ $image := .Resources.GetMatch .Params.image | default $default_image }}
             {{ $alt_text := .Params.image_alt_text | default $default_alt_text }}
-            <img src="{{ $image.RelPermalink }}" alt={{ $alt_text }}>
+            <img class="img-fluid" src="{{ $image.RelPermalink }}" alt={{ $alt_text }}>
           </div>
 
           <div class="col-md-10">
