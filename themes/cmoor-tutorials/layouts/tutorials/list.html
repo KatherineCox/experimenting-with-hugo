@@ -13,22 +13,22 @@
       <div class="card">
 
         {{/* outer row: image and card content */}}
-        <div class="row">
+        <div class="row gx-0">
 
-          <div class="col-md-2">
+          <div class="col-4 col-md-3 col-xl-2">
             {{ $image := .Resources.GetMatch .Params.image | default $default_image }}
             {{ $alt_text := .Params.image_alt_text | default $default_alt_text }}
             <img class="img-thumbnail" src="{{ $image.RelPermalink }}" alt={{ $alt_text }}>
           </div>
 
-          <div class="col-md-10">
+          <div class="col-8 col-md-9 col-xl-10">
           <div class="card-body">
 
             <h2 class="card-title"> {{ .Title | markdownify }} </h2>
-            <p> {{ .Params.summary | markdownify }} </p>
+            <p class="mb-1"> {{ .Params.summary | markdownify }} </p>
 
             {{/* tags */}}
-            <div style="font-size: 0.8rem;">
+            <div class="mb-1" style="font-size: 0.8rem;">
               <a href="#">tag1</a>
               <a href="#">tag1</a>
             </div>
@@ -36,18 +36,12 @@
 
             {{/* buttons */}}
             <div>
-              <a class="btn btn-primary btn-sm" href="#" role="button">Details</a>
-              <a class="btn btn-primary btn-sm" href="#" role="button">View</a>
-              <a class="btn btn-primary btn-sm" href="#" role="button">Source</a>
-              <a class="btn btn-primary btn-sm" href="#" role="button">Details</a>
-              <a class="btn btn-primary btn-sm" href="#" role="button">View</a>
-              <a class="btn btn-primary btn-sm" href="#" role="button">Source</a>
-              <a class="btn btn-primary btn-sm" href="#" role="button">Details</a>
-              <a class="btn btn-primary btn-sm" href="#" role="button">View</a>
-              <a class="btn btn-primary btn-sm" href="#" role="button">Source</a>
-              <a class="btn btn-primary btn-sm" href="#" role="button">Details</a>
-              <a class="btn btn-primary btn-sm" href="#" role="button">View</a>
-              <a class="btn btn-primary btn-sm" href="#" role="button">Source</a>
+              <a class="btn btn-primary btn-sm mb-1" href="#" role="button">Details</a>
+              <a class="btn btn-primary btn-sm mb-1" href="#" role="button">View</a>
+              <a class="btn btn-primary btn-sm mb-1" href="#" role="button">Source</a>
+              <a class="btn btn-primary btn-sm mb-1" href="#" role="button">Details</a>
+              <a class="btn btn-primary btn-sm mb-1" href="#" role="button">View</a>
+              <a class="btn btn-primary btn-sm mb-1" href="#" role="button">Source</a>
             </div>
             {{/* end buttons */}}
 
