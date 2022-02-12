@@ -13,12 +13,12 @@
       <div class="card">
 
         {{/* outer row: image and card content */}}
-        <div class="row gx-0">
+        <div class="row gx-3">
 
           <div class="col-4 col-md-3 col-xl-2">
             {{ $image := .Resources.GetMatch .Params.image | default $default_image }}
             {{ $alt_text := .Params.image_alt_text | default $default_alt_text }}
-            <img class="img-thumbnail" src="{{ $image.RelPermalink }}" alt={{ $alt_text }}>
+            <img class="img-thumbnail m-3" src="{{ $image.RelPermalink }}" alt={{ $alt_text }}>
           </div>
 
           <div class="col-8 col-md-9 col-xl-10">
