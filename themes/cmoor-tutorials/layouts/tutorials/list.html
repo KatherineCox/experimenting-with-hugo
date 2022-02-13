@@ -36,14 +36,25 @@
 
             {{/* buttons */}}
             <div>
-              <a class="btn btn-primary btn-sm mb-1" href="#" role="button">Details</a>
-              <a class="btn btn-primary btn-sm mb-1" href="#" role="button">View</a>
-              <a class="btn btn-primary btn-sm mb-1" href="#" role="button">Source</a>
-              <a class="btn btn-primary btn-sm mb-1" href="#" role="button">Details</a>
-              <a class="btn btn-primary btn-sm mb-1" href="#" role="button">View</a>
-              <a class="btn btn-primary btn-sm mb-1" href="#" role="button">Source</a>
+              <a class="btn btn-primary btn-sm mb-1" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Details</a>
+              <a class="btn btn-primary btn-sm mb-1" href="#">View</a>
+              <a class="btn btn-primary btn-sm mb-1" href="#">Source</a>
+              <a class="btn btn-primary btn-sm mb-1" href="#">Details</a>
+              <a class="btn btn-primary btn-sm mb-1" href="#">View</a>
+              <a class="btn btn-primary btn-sm mb-1" href="#">Source</a>
             </div>
             {{/* end buttons */}}
+
+            {{/* details (collapsed) */}}
+            <div class="collapse" id="collapseExample">
+              <h3 class="card-title"> Learning Objectives </h3>
+                <ol>
+                  {{range .Params.learning_goals}}
+                    <li>{{ . }}</li>
+                  {{end}}
+                </ol>
+            </div>
+            {{/* end details */}}
 
           </div>
           </div>
