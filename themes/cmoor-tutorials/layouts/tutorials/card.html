@@ -2,6 +2,14 @@
   {{ $default_image := .Parent.Resources.GetMatch .Parent.Params.default_image}}
   {{ $default_alt_text := .Parent.Params.default_image_alt_text }}
 
+{{/* MD5-checksum of the file’s path so the details tab knows which div to expand
+  html ids cannot start with a number, so prepend with "details_"
+  delimit combines the items in a slice using the delimiter
+  (we are creating the slice in-place)
+  in R this would be paste("details", .File.UniqueID, sep="_") */}}
+
+  {{ $details_id := delimit (slice "details" .File.UniqueID) "_" }}
+
 <div class="card">
 
   {{/* outer row: image and card content */}}
@@ -28,7 +36,7 @@
 
         {{/* buttons */}}
         <div>
-          <a class="btn btn-primary btn-sm mb-1" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Details</a>
+          <a class="btn btn-primary btn-sm mb-1" data-bs-toggle="collapse" href="#{{ $details_id }}" role="button" aria-expanded="false" aria-controls="collapseExample">Details</a>
           <a class="btn btn-primary btn-sm mb-1" href="#">View</a>
           <a class="btn btn-primary btn-sm mb-1" href="#">Source</a>
           <a class="btn btn-primary btn-sm mb-1" href="#">Details</a>
@@ -38,7 +46,7 @@
         {{/* end buttons */}}
 
         {{/* details (collapsed) */}}
-        <div class="collapse" id="collapseExample">
+        <div class="collapse" id="{{ $details_id }}">
           <h3 class="card-title"> Learning Objectives </h3>
           <ol>
             {{range .Params.learning_goals}}

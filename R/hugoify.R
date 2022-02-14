@@ -53,5 +53,8 @@ hugoify <- function(source, hugo_section, hugo_root=".", hugo_name=NULL) {
 # for temporary testing, formalize into proper tests later
 source = "test_tutorials/Biological_Databases_FlyBase/Biological_Databases_Flybase.Rmd"
 hugo_section = "tutorials"
+hugoify(source = source, hugo_section = hugo_section)
 
+source = "test_tutorials/Biological_Databases_HPA/Biological_Databases_HPA.Rmd"
+hugo_section = "tutorials"
 hugoify(source = source, hugo_section = hugo_section)
