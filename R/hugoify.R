@@ -16,9 +16,16 @@
 
 
 
-hugoify <- function(source, hugo_section, hugo_root=".", hugo_name=NULL) {
+hugoify <- function(source, hugo_root=".", hugo_section=NULL, hugo_name=NULL) {
   # get source directory path, so we can reference it easily
   source_dir <- dirname(source)
+
+  # build hugo_path, from components if not provided
+  # TODO: handle whether or not "content" is included in user input
+  hugo_path <- file.path(hugo_root, "content")
+  if (!(is.null(hugo_section))) {
+    hugo_path <- file.path(hugo_path, hugo_section)
+  }
 
   # get name for directory to create in hugo, if not provided
   if (is.null(hugo_name)) {
@@ -26,7 +33,7 @@ hugoify <- function(source, hugo_section, hugo_root=".", hugo_name=NULL) {
   }
 
   # create output directory
-  output_dir <- file.path(hugo_root, "content", hugo_section, hugo_name)
+  output_dir <- file.path(hugo_path, hugo_name)
   dir.create(output_dir)
 
   # read in the rmd yaml as an R list
@@ -51,10 +58,14 @@ hugoify <- function(source, hugo_section, hugo_root=".", hugo_name=NULL) {
 
 # DELETE ME!
 # for temporary testing, formalize into proper tests later
-source = "test_tutorials/Biological_Databases_FlyBase/Biological_Databases_Flybase.Rmd"
+source = "test_tutorials/Biological_Databases_FlyBase/Biological_Databases_FlyBase.Rmd"
 hugo_section = "tutorials"
 hugoify(source = source, hugo_section = hugo_section)
 
 source = "test_tutorials/Biological_Databases_HPA/Biological_Databases_HPA.Rmd"
+hugo_section = "tutorials"
+hugoify(source = source, hugo_section = hugo_section)
+
+source = "test_tutorials/Biological_Databases_Intro/Biological_Databases_Intro.Rmd"
 hugo_section = "tutorials"
 hugoify(source = source, hugo_section = hugo_section)

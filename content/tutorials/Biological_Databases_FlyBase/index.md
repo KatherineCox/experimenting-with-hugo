@@ -13,6 +13,7 @@ runtime: shiny_prerendered
 summary: |
   This tutorial will introduce you to FlyBase ([flybase.org](http://flybase.org)).  FlyBase (short for fly database) is a website for the *Drosophila* scientific community that organizes research results about *Drosophila*.
 image: FlyBase_logo.png
+image_alt_text: FlyBase Logo
 image_caption: ''
 author: '[Katherine Cox](https://c-moor.github.io/portfolio/coxkatherine/)'
 learning_goals:
