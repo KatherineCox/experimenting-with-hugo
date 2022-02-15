@@ -39,9 +39,9 @@
           <a class="btn btn-primary btn-sm mb-1" data-bs-toggle="collapse" href="#{{ $details_id }}" role="button" aria-expanded="false" aria-controls="collapseExample">Details</a>
           <a class="btn btn-primary btn-sm mb-1" href="#">View</a>
           <a class="btn btn-primary btn-sm mb-1" href="#">Source</a>
-          <a class="btn btn-primary btn-sm mb-1" href="#">Details</a>
-          <a class="btn btn-primary btn-sm mb-1" href="#">View</a>
-          <a class="btn btn-primary btn-sm mb-1" href="#">Source</a>
+          <a class="btn btn-primary btn-sm mb-1" href="#">Random</a>
+          <a class="btn btn-primary btn-sm mb-1" href="#">Other</a>
+          <a class="btn btn-primary btn-sm mb-1" href="#">Buttons</a>
         </div>
         {{/* end buttons */}}
 
@@ -49,9 +49,15 @@
         <div class="collapse" id="{{ $details_id }}">
           <h3 class="card-title"> Learning Objectives </h3>
           <ol>
-            {{range .Params.learning_goals}}
-            <li>{{ . }}</li>
-            {{end}}
+            {{ if reflect.IsSlice .Params.learning_goals }}
+              {{ range .Params.learning_goals }}
+              <li>{{ . }}</li>
+              {{ end }}
+            {{ else }}
+              {{ with .Params.learning_goals }}
+              <li>{{ . }}</li>
+              {{ end }}
+            {{ end }}
           </ol>
         </div>
         {{/* end details */}}
