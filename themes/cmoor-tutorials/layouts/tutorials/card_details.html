@@ -1,0 +1,12 @@
+<h3 class="card-title"> Learning Objectives </h3>
+<ol>
+  {{ if reflect.IsSlice .Params.learning_goals }}
+    {{ range .Params.learning_goals }}
+    <li>{{ . }}</li>
+    {{ end }}
+  {{ else }}
+    {{ with .Params.learning_goals }}
+    <li>{{ . }}</li>
+    {{ end }}
+  {{ end }}
+</ol>

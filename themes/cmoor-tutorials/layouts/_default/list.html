@@ -1,3 +1,20 @@
 {{ define "main" }}
-This is a list page
+
+<main class="container">
+
+  <h1>{{ .Title | markdownify }}</h1>
+
+    {{ .Content }}
+
+    {{ range .RegularPages }}
+      {{ partial "card.html" . }}
+    {{ end }}
+
+  <h1>Pages (instead of Regular Pages)</h1>
+    {{ range .Pages }}
+      <h2> {{ .Title | markdownify }} </h2>
+    {{ end }}
+
+</main>
+
 {{ end }}
