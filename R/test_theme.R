@@ -1,5 +1,6 @@
 # TODO: add page kind (home, list, single) as a param, and update how index.md is named
 # TODO: option for single pages without their own directories?
+# TODO: make yaml parsing less fragile / more informative errors? bleh
 
 make_test_page <- function( name, output_dir=".",
                             params=list(title=name),
@@ -24,7 +25,14 @@ make_test_page <- function( name, output_dir=".",
     file.copy(r, output_dir)
   }
 
-  #
+  # make child pages
+  for (child in names(children)) {
+    # append the name and output directory to the args list, then make the page
+    args <- c( list(name=child, output_dir=file.path(output_dir, child)),
+               children[[child]])
+    do.call(make_test_page, args)
+  }
+
 }
 
 make_test_content <- function( config, output_dir = "./content", overwrite=FALSE) {
@@ -35,7 +43,8 @@ make_test_content <- function( config, output_dir = "./content", overwrite=FALSE
   if (dir.exists(output_dir)) {
     if (!overwrite) {
       stop("Directory '", output_dir, "' already exists.
-           Set 'overwrite=TRUE' if you wish to overwrite the existing directory")
+           Set 'overwrite=TRUE' if you wish to overwrite the existing directory.
+           This will delete all existing files in the directory.")
     } else {
       unlink(output_dir, recursive = TRUE)
     }
@@ -58,12 +67,14 @@ make_test_page("test")
 test_yaml <-"
 list1:
   children:
-    - child1
-    - child2
+    child1:
+    child2:
 list2:
   children:
-    - child 3
-    - child 4
+    child3:
+    child4:
+      params:
+        subtitle: child4 subtitle
 "
 
 make_test_content(test_yaml, output_dir="test_output", overwrite = TRUE)
