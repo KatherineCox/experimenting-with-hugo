@@ -78,3 +78,13 @@ list2:
 "
 
 make_test_content(test_yaml, output_dir="test_output", overwrite = TRUE)
+
+make_image <- function (text, size=30, background="lightblue",
+                        device="png", filename=paste(text, device, sep="."), ...) {
+  p<- ggplot2::ggplot() +
+      ggplot2::annotate(geom = "text", x=1, y=1, label = text, size = size) +
+      ggplot2::theme_void() +
+      ggplot2::theme(plot.background = ggplot2::element_rect(fill = background))
+
+  ggplot2::ggsave(filename, device=device, ...)
+}
