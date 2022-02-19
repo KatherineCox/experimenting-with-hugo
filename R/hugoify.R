@@ -50,10 +50,7 @@ hugoify <- function(source, hugo_root=".", hugo_section=NULL, hugo_name=NULL) {
   yaml_list$image <- image_filename
 
   # write index.md file
-  # - convert R list to yaml string
-  # - add the yaml delimiters
-  yaml_string <- yaml::as.yaml(yaml_list)
-  cat("---\n", yaml_string, "---\n", file=output_md, sep="")
+  write_md( yaml_list, filename=output_md )
 }
 
 # DELETE ME!
