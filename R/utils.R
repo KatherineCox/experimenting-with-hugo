@@ -7,7 +7,7 @@ write_md <- function( yaml=NULL, content=NULL, filename ) {
 
 read_md <- function(file) {
   s <- readLines(file)
-  yaml_delim <- stringr::str_which(s, "---")
+  yaml_delim <- grep("---", s)
 
   # we expect there to be two yaml delimiters
   if ( !(length(yaml_delim) == 2) ) {
