@@ -14,6 +14,13 @@
 # becomes <repo>/content/tutorials
 # be flexible about where "content" goes or whether it's required
 
+# First look for an index.md; use this if available
+# - allows people to separate hugo from learnr if desired
+# - enables non-Rmd shinyapps
+# Next look for an Rmd with runtime (shiny or shiny prerendered?)
+# Settings in index.md should override .Rmd, since index.md is specifically for hugo
+
+
 
 
 hugoify <- function(source, hugo_root=".", hugo_section=NULL, hugo_name=NULL) {
